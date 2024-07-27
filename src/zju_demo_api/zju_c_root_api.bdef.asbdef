@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZJU_C_ROOT_API alias Root
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Child { create; }
+}
+
+define behavior for ZJUI_C_CHILD_API alias Child
+{
+  use update;
+  use delete;
+
+  use association _Root;
+}

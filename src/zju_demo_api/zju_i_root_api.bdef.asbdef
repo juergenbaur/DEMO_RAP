@@ -1,0 +1,52 @@
+managed implementation in class zbp_ju_i_root_api unique;
+strict ( 2 );
+
+define behavior for zju_i_root_api alias Root
+persistent table zju_root_api
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+// CDS = Table
+  mapping for zju_root_api
+    {
+      Id            = id;
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+  create;
+  update;
+  delete;
+  //  field ( readonly ) Id;
+  // external numbering
+  field ( mandatory : create ) Id;
+  field ( readonly : update ) Id;
+  association _Child { create; }
+}
+
+define behavior for ZJUI_I_CHILD_API alias Child
+persistent table zju_child_api
+lock dependent by _Root
+authorization dependent by _Root
+etag master LastChangedAt
+{
+  mapping for zju_child_api
+    {
+      Spras         = spras;
+      Id            = id;
+      Text          = text;
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+  update;
+  delete;
+  // field ( readonly ) Spras, Id;
+  // external numbering
+  field ( mandatory : create ) Spras, Id;
+  field ( readonly : update ) Spras, Id;
+  association _Root;
+}
