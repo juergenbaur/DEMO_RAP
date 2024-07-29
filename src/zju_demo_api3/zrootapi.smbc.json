@@ -1,0 +1,43 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Root API",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_ROOTAPI_O4",
+    "serviceName": "ZUI_ROOTAPI_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "RootApiAll",
+    "name": "Root API",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "RootApiAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "RootApi",
+        "tableType": "gridTable",
+        "selectionMode": "single",
+        "rowCountMode": "auto",
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true
+      },
+      {
+        "entitySet": "RootApiText",
+        "tableType": "gridTable",
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true
+      }
+    ]
+  }
+}

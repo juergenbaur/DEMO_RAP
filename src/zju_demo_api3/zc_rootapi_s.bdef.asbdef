@@ -1,0 +1,41 @@
+projection implementation in class ZBP_C_ROOTAPI_S unique;
+strict;
+use draft;
+define behavior for ZC_RootApi_S alias RootApiAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _RootApi { create ( augment ); with draft; }
+}
+
+define behavior for ZC_RootApi alias RootApi
+
+{
+  field ( modify )
+   Text_000;
+
+
+  use update( augment );
+  use delete;
+
+  use action CopyRootApi;
+
+  use association _RootApiAll { with draft; }
+  use association _RootApiText { create; with draft; }
+}
+
+define behavior for ZC_RootApiText alias RootApiText
+
+{
+  use update;
+  use delete;
+
+  use association _RootApiAll { with draft; }
+  use association _RootApi { with draft; }
+}

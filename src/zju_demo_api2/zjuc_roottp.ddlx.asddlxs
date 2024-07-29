@@ -1,0 +1,70 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Root', 
+    typeNamePlural: 'Roots', 
+    title: {
+      type: #STANDARD, 
+      label: 'Root', 
+      value: 'ID'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'ID', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZJUC_RootTP with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'Root', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 20 
+  }, 
+  {
+    id: 'idChild', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Child', 
+    position: 30 , 
+    targetElement: '_Child'
+  } ]
+  @UI.hidden: true
+  HeaderUUID;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 20 
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ID;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

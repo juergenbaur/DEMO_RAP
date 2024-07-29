@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZC_RootApi_S'
+define service ZUI_ROOTAPI {
+  expose ZC_ROOTAPI_S as RootApiAll;
+  expose ZC_ROOTAPI as RootApi;
+  expose ZC_ROOTAPITEXT as RootApiText;
+}

@@ -1,0 +1,93 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Child', 
+    typeNamePlural: 'Childs', 
+    title: {
+      type: #STANDARD, 
+      label: 'Child', 
+      value: 'Language'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'Language', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZJUC_ChildTP with
+{
+  @UI.facet: [ {
+    id: 'idChild', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Child', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  ItemUUID;
+  
+  @UI.hidden: true
+  ParentUUID;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  Language;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  ID;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  Text;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  CreatedBy;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  CreatedAt;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

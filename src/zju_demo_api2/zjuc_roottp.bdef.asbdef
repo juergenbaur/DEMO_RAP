@@ -1,0 +1,22 @@
+projection;
+strict ( 2 );
+define behavior for ZJUC_RootTP alias Root
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Child { create; }
+}
+
+define behavior for ZJUC_ChildTP alias Child
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _Root;
+}

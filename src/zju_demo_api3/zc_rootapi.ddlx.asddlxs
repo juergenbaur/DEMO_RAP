@@ -1,0 +1,51 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'RootApi', 
+    typeNamePlural: 'RootApis', 
+    title: {
+      type: #STANDARD, 
+      label: 'Root API', 
+      value: 'Id'
+    }
+  }
+}
+annotate view ZC_RootApi with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'CopyRootApi', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_RootApi', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Root API', 
+    position: 1 
+  }, 
+  {
+    id: 'ZI_RootApiText', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Root API Text', 
+    position: 2 , 
+    targetElement: '_RootApiText'
+  } ]
+  Id;
+  
+  @UI.identification: [ {
+    hidden: true, 
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Text_000;
+}

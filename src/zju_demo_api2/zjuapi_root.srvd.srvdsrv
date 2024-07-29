@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZJUC_RootTP'
+define service ZJUAPI_Root {
+  expose ZJUC_ROOTTP as Root;
+  expose ZJUC_CHILDTP as Child;
+}

@@ -1,0 +1,79 @@
+managed;
+strict ( 2 );
+define behavior for ZJUR_RootTP alias Root
+implementation in class ZJUBP_R_RootTP unique
+persistent table ZJU_UUID_ROOT
+etag master LastChangedAt
+lock master
+authorization master( global )
+
+{
+  field ( readonly )
+   HeaderUUID,
+   ID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   HeaderUUID;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for ZJU_UUID_ROOT
+  {
+    HeaderUUID = HEADER_UUID;
+    ID = ID;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _Child { create; }
+
+  determination CalculateID on save { create; }
+}
+
+define behavior for ZJUR_ChildTP alias Child
+implementation in class ZJUBP_R_ChildTP unique
+persistent table ZJU_UUID_CHILD
+etag master LastChangedAt
+lock dependent by _Root
+authorization dependent by _Root
+
+{
+  field ( readonly )
+   ItemUUID,
+   ParentUUID,
+   Language,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ItemUUID;
+
+
+  update;
+  delete;
+
+  mapping for ZJU_UUID_CHILD
+  {
+    ItemUUID = ITEM_UUID;
+    ParentUUID = PARENT_UUID;
+    Language = SPRAS;
+    ID = ID;
+    Text = TEXT;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _Root;
+
+  determination CalculateLanguage on save { create; }
+}

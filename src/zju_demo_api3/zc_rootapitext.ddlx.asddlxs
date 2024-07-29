@@ -1,0 +1,37 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'RootApiText', 
+    typeNamePlural: 'RootApiTexts', 
+    title: {
+      type: #STANDARD, 
+      label: 'Root API Text', 
+      value: 'Spras'
+    }
+  }
+}
+annotate view ZC_RootApiText with
+{
+  @UI.facet: [ {
+    id: 'ZI_RootApiText', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Root API Text', 
+    position: 1 
+  } ]
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  Spras;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Text_000;
+}
