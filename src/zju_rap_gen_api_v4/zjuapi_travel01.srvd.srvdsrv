@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZJUC_Travel01TP'
+define service ZJUAPI_Travel01 {
+  expose ZJUC_TRAVEL01TP as Travel;
+  expose ZJUC_BOOKINGTP as Booking;
+  expose I_CURRENCY as Currency;
+}
